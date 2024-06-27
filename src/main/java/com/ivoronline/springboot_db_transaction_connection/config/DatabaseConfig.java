@@ -22,21 +22,4 @@ public class DatabaseConfig {
     return new JdbcTemplate(new SingleConnectionDataSource(dataSource.getConnection(), true));
   }
 
-  //=========================================================================================================
-  // SINGLE CONNECTION DATA SOURCE
-  //=========================================================================================================
-  /*
-  @Bean
-  public DataSource dataSource() {
-    SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
-                               dataSource.setUrl     ("jdbc:oracle:thin:@localhost:1522/orcl");
-                               dataSource.setUsername("TEST");
-                               dataSource.setPassword("LETMEIN");
-                             //dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-                             //dataSource.setAutoCommit(false);
-      return dataSource;
-  }
-
-   */
-
 }

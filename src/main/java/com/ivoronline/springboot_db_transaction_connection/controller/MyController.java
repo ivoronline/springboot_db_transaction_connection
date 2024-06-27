@@ -14,12 +14,12 @@ public class MyController {
   @Autowired private MyService personService;
 
   //=========================================================================================================
-  // INSERT RECORDS
+  // INSERT
   //=========================================================================================================
   @ResponseBody
-  @GetMapping("/insertRecords")
-  public String insertRecords() throws SQLException {
-    personService.insertRecords();
+  @GetMapping("/insert")
+  public String insert() throws SQLException {
+    personService.insert();
     return "Records Inserted";
   }
 

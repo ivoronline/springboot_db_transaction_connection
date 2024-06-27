@@ -2,8 +2,8 @@ package com.ivoronline.springboot_db_transaction_connection.service;
 
 import com.ivoronline.springboot_db_transaction_connection.repository.MyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -12,15 +12,15 @@ public class MyService {
 
   //PROPERTIES
   @Autowired private MyRepository repository;
-  @Autowired private DataSource   dataSource;
+  @Autowired private JdbcTemplate jdbcTemplate;
 
   //=========================================================================================================
-  // INSERT RECORDS
+  // INSERT
   //=========================================================================================================
-  public void insertRecords() throws SQLException {
+  public void insert() throws SQLException {
 
     //GET DB CONNECTION
-    Connection connection = dataSource.getConnection(); //Exception: Connection was Closed
+    Connection connection = jdbcTemplate.getDataSource().getConnection();
 
     //TRANSACTION
     try {
@@ -30,7 +30,7 @@ public class MyService {
 
       //EXECUTE SQL STATEMENTS (Inserts both Records or none)
       for (int i = 1; i <= 2; i++) {
-        if(i==2) { throw new Exception("Exception"); }
+        //if(i==2) { throw new Exception("Exception"); }
         repository.insert("Person " + i, 10 * i);
       }
 
